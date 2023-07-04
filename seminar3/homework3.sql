@@ -5,7 +5,7 @@ USE homework3;
 -- табл. Продавцы
 DROP TABLE IF EXISTS Salespeople;
 CREATE TABLE Salespeople (
-snum SERIAL PRIMARY KEY,
+snum INT PRIMARY KEY,
 sname VARCHAR(10) NOT NULL,
 city VARCHAR(10)
 );
@@ -24,7 +24,7 @@ FROM Salespeople;
 -- табл. Заказчики
 DROP TABLE IF EXISTS Customers;
 CREATE TABLE Customers (
-cnum SERIAL PRIMARY KEY,
+cnum INT PRIMARY KEY,
 cname VARCHAR(10) NOT NULL,
 city VARCHAR(10),
 rating INT,
@@ -48,7 +48,7 @@ FROM Customers;
 -- табл. Заказы
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
-onum SERIAL PRIMARY KEY,
+onum INT PRIMARY KEY,
 amt DECIMAL,
 odate DATE NOT NULL,
 cnum INT,
