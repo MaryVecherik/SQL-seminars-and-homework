@@ -76,7 +76,7 @@ FROM Salespeople;
 -- 2. Напишите команду SELECT, которая вывела бы оценку(rating), сопровождаемую именем каждого заказчика в городе San Jose. (“заказчики”)
 SELECT rating, cname
 FROM Customers
-WHERE city = 'SanJose';
+WHERE city = 'San Jose';
 
 -- 3. Напишите запрос, который вывел бы значения snum всех продавцов из таблицы заказов без каких бы то ни было повторений. (уникальные значения в  “snum“ “Продавцы”)
 SELECT DISTINCT snum 
