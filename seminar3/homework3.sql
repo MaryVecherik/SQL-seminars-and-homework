@@ -5,7 +5,7 @@ USE homework3;
 -- табл. Продавцы
 DROP TABLE IF EXISTS Salespeople;
 CREATE TABLE Salespeople (
-snum INT NOT NULL PRIMARY KEY,
+snum INT AUTO_INCREMENT PRIMARY KEY,
 sname VARCHAR(10) NOT NULL,
 city VARCHAR(10)
 );
@@ -24,7 +24,7 @@ FROM Salespeople;
 -- табл. Заказчики
 DROP TABLE IF EXISTS Customers;
 CREATE TABLE Customers (
-cnum INT NOT NULL PRIMARY KEY,
+cnum INT AUTO_INCREMENT PRIMARY KEY,
 cname VARCHAR(10) NOT NULL,
 city VARCHAR(10),
 rating INT,
@@ -48,13 +48,13 @@ FROM Customers;
 -- табл. Заказы
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
-onum INT NOT NULL PRIMARY KEY,
+onum INT AUTO_INCREMENT PRIMARY KEY,
 amt DECIMAL,
 odate DATE NOT NULL,
-cnum INT NOT NULL,
-snum INT NOT NULL,
-FOREIGN KEY (cnum) REFERENCES Customers(cnum) ON DELETE CASCADE,
-FOREIGN KEY (snum) REFERENCES Salespeople(snum) ON DELETE CASCADE
+cnum INT,
+snum INT,
+FOREIGN KEY (cnum) REFERENCES Customers(cnum),
+FOREIGN KEY (snum) REFERENCES Salespeople(snum)
 );
 
 INSERT INTO Orders (onum, amt, odate, cnum, snum)
