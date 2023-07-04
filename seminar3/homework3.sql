@@ -28,7 +28,8 @@ cnum INT NOT NULL PRIMARY KEY,
 cname VARCHAR(10) NOT NULL,
 city VARCHAR(10),
 rating INT,
-snum INT
+snum INT,
+FOREIGN KEY (snum) REFERENCES Salespeople(snum) ON DELETE CASCADE
 );
 
 INSERT INTO Customers (cnum, cname, city, rating, snum)
@@ -51,7 +52,9 @@ onum INT NOT NULL PRIMARY KEY,
 amt DECIMAL,
 odate DATE NOT NULL,
 cnum INT NOT NULL,
-snum INT NOT NULL
+snum INT NOT NULL,
+FOREIGN KEY (cnum) REFERENCES Customers(cnum) ON DELETE CASCADE,
+FOREIGN KEY (snum) REFERENCES Salespeople(snum) ON DELETE CASCADE
 );
 
 INSERT INTO Orders (onum, amt, odate, cnum, snum)
