@@ -153,11 +153,6 @@ FROM staff
 ORDER BY salary DESC
 LIMIT 5; 
 
--- 2.1
-SELECT * 
-FROM staff 
-ORDER BY salary 
-LIMIT (SELECT COUNT(*) FROM staff) - 5, SELECT COUNT(*) FROM staff; 
 
 -- 3. Выполните группировку всех сотрудников по специальности, суммарная зарплата которых превышает 100000
 SELECT post, SUM(salary) as sum
