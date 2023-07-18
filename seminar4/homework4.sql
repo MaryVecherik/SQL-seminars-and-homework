@@ -29,11 +29,13 @@ SELECT * FROM AUTO;
 Вывести на экран, сколько машин каждого цвета для машин марок BMW и LADA
 */ 
 
+-- 1.1
 SELECT MARK, COLOR, COUNT(COLOR) as count
 FROM AUTO
 WHERE MARK IN ('BMW', 'LADA')
 GROUP BY COLOR, MARK;
 
+-- 1.2
 SELECT MARK, COLOR, COUNT(COLOR) as count
 FROM AUTO
 GROUP BY COLOR, MARK
@@ -48,7 +50,6 @@ HAVING MARK IN ('BMW', 'LADA');
 SELECT MARK, COUNT(*) as count, (SELECT COUNT(*) FROM AUTO) - COUNT(*) as other
 FROM AUTO
 GROUP BY MARK;
-
 
 -- Задание 3
 
