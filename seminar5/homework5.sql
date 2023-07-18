@@ -121,6 +121,13 @@ JOIN Orders
 ON Orders.ord_an = Analysis.an_id
 WHERE Orders.ord_datetime BETWEEN '2020-02-05' AND TIMESTAMPADD(DAY, 7, '2020-02-05');
 
+
+SELECT an_name, an_price, ord_datetime
+FROM Analysis 
+JOIN Orders
+ON Orders.ord_an = Analysis.an_id
+WHERE Orders.ord_datetime >= '2020-02-05' AND Orders.ord_datetime <= DATE_ADD('2020-02-05', INTERVAL 1 WEEK);
+
 -- -----------------------------------------------------------
 DROP TABLE IF EXISTS t;
 CREATE TABLE t (
@@ -148,5 +155,10 @@ SELECT * FROM t;
 */
 
 SELECT *,
-	TIMEDIFF(LEAD(station_time) OVER (PARTITION BY train_id ORDER BY station_time), station_time) as time_to_next_station
-FROM t
+TIMEDIFF(LEAD(station_time) OVER (PARTITION BY train_id ORDER BY station_time), station_time) as time_to_next_station
+FROM t;
+
+
+SELECT *,
+SUBTIME(LEAD(station_time) OVER (PARTITION BY train_id ORDER BY station_time), station_time) as time_to_next_station
+FROM t;
