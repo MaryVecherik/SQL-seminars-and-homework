@@ -115,13 +115,14 @@ SELECT * FROM Orders;
 и всю следующую неделю.
 */
 
+-- 4.1
 SELECT an_name, an_price, ord_datetime
 FROM Analysis 
 JOIN Orders
 ON Orders.ord_an = Analysis.an_id
 WHERE Orders.ord_datetime BETWEEN '2020-02-05' AND TIMESTAMPADD(DAY, 7, '2020-02-05');
 
-
+-- 4.2
 SELECT an_name, an_price, ord_datetime
 FROM Analysis 
 JOIN Orders
@@ -154,11 +155,12 @@ SELECT * FROM t;
 В этом случае функция сравнивает значения в столбце «время» для станции со станцией сразу после нее.
 */
 
+-- 5.1
 SELECT *,
 TIMEDIFF(LEAD(station_time) OVER (PARTITION BY train_id ORDER BY station_time), station_time) as time_to_next_station
 FROM t;
 
-
+-- 5.2
 SELECT *,
 SUBTIME(LEAD(station_time) OVER (PARTITION BY train_id ORDER BY station_time), station_time) as time_to_next_station
 FROM t;
